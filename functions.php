@@ -9,7 +9,7 @@
 
 if ( ! defined( '_S_VERSION' ) ) {
 	// Replace the version number of the theme on each release.
-	define( '_S_VERSION', '1.0.0' );
+	define( '_S_VERSION', time() );
 }
 
 /**
@@ -141,7 +141,11 @@ function demo_skylith_scripts() {
 	wp_enqueue_style( 'demo-skylith-style', get_stylesheet_uri(), array(), _S_VERSION );
 	wp_style_add_data( 'demo-skylith-style', 'rtl', 'replace' );
 
+	wp_enqueue_style( 'demo-skylith-bs-style', get_template_directory_uri() . '/assets/main.css' , array(), _S_VERSION );
+
 	wp_enqueue_script( 'demo-skylith-navigation', get_template_directory_uri() . '/js/navigation.js', array(), _S_VERSION, true );
+
+	wp_enqueue_script( 'demo-skylith-bs-js', get_template_directory_uri() . '/assets/bootstrap/dist/js/bootstrap.min.js', array('jquery'), _S_VERSION, true );
 
 	if ( is_singular() && comments_open() && get_option( 'thread_comments' ) ) {
 		wp_enqueue_script( 'comment-reply' );
